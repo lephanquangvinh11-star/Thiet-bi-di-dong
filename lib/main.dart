@@ -41,7 +41,7 @@ class ProfileScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Ảnh đại diện hình tròn
+            // Ảnh đại diện
             CircleAvatar(
               radius: 60,
               backgroundImage: AssetImage(
@@ -59,7 +59,7 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 6),
-            // Mã số sinh viên (Bạn có thể thay đổi lại cho khớp MSSV thật của mình nếu muốn)
+            // Mã số sinh viên
             const Text(
               'MSSV 080206007771',
               style: TextStyle(
