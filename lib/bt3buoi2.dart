@@ -70,11 +70,13 @@ class GradeClassificationScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 14, color: Colors.grey),
                   ),
                   const SizedBox(height: 4),
+
                   Text(
                     '$mainScore',
                     style: const TextStyle(
                       fontSize: 48,
                       fontWeight: FontWeight.bold,
+                      color: Colors.red,
                     ),
                   ),
                   const SizedBox(height: 12),

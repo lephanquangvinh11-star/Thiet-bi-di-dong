@@ -11,61 +11,85 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Thực hành 1',
+      title: 'My First App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const ProfileScreen(),
+      home: const HomeScreen(),
     );
   }
 }
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  // Biến lưu trạng thái chuỗi hiển thị
+  String _displayText = 'Hello';
+
+  // Hàm xử lý sự kiện khi nhấn nút "Say Hi!"
+  void _handleButtonPress() {
+    setState(() {
+      _displayText = "I'm Le Phan Quang Vinh";
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Hello World'),
-        backgroundColor: Colors.black87,
-        foregroundColor: Colors.white,
+        title: const Text('Phone 14 Pro'),
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        elevation: 0,
+        centerTitle: true,
       ),
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // Ảnh đại diện hình tròn
-              const CircleAvatar(
-                radius: 60,
-                backgroundImage: AssetImage('assets/profile.jpg'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Tiêu đề ứng dụng
+            const Text(
+              'My First App',
+              style: TextStyle(
+                fontSize: 35,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
               ),
-              const SizedBox(height: 20),
-
-              // Họ và tên & Mã số sinh viên[cite: 13]
-              const Text(
-                'Lê Phan Quang Vinh - 080206807771',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+            ),
+            const SizedBox(height: 80),
+            // Đoạn text thay đổi theo trạng thái
+            Text(
+              _displayText,
+              style: const TextStyle(
+                fontSize: 26,
+                color: Colors.black87,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 100),
+            // Nút bấm Say Hi!
+            ElevatedButton(
+              onPressed: _handleButtonPress,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF1D4ED8), // Màu xanh dương
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 14),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
                 ),
-                textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 10),
-
-              // Định hướng sau khi học xong môn học
-              const Text(
-                'Mong muốn và định hướng của Bạn là gì sau khi học xong môn học là gì?',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey,
-                ),
-                textAlign: TextAlign.center,
+              child: const Text(
+                'Say Hi!',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
